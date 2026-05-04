@@ -2,37 +2,455 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Simple Business | About · Services · Contact</title>
+    <!-- Google Fonts & simple icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        /* simple container */
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 2rem 1.5rem;
         }
-        h1 {
-            color: #333;
+
+        /* header / dashboard title */
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
         }
-        p {
-            color: #666;
-            line-height: 1.6;
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #0f3b4c;
+        }
+        .header p {
+            color: #475569;
+            margin-top: 0.5rem;
+        }
+
+        /* card style for each section */
+        .section {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #0c4a6e;
+        }
+        .section-title i {
+            color: #2c7da0;
+            font-size: 1.6rem;
+        }
+        .divider {
+            width: 50px;
+            height: 3px;
+            background: #b9d8f0;
+            margin: 0.6rem 0 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        /* about: simple text */
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #334155;
+        }
+
+        /* services: simple grid */
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .service-item {
+            flex: 1;
+            min-width: 180px;
+            background: #fefefe;
+            padding: 1.2rem;
+            border-radius: 1rem;
+            border: 1px solid #e9f0f5;
+            transition: all 0.2s;
+        }
+        .service-item i {
+            font-size: 2rem;
+            color: #2c7da0;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+        }
+        .service-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .service-item p {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        /* contacts: two columns simple */
+        .contacts-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .contact-info {
+            flex: 1;
+        }
+        .contact-details {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: #1e293b;
+        }
+        .contact-details li i {
+            width: 28px;
+            color: #2c7da0;
+            font-size: 1.2rem;
+        }
+        .contact-form {
+            flex: 1;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid #cbd5e1;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            background: white;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2c7da0;
+            box-shadow: 0 0 0 3px rgba(44,125,160,0.1);
+        }
+        .btn {
+            background: #1e6f9f;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .btn:hover {
+            background: #0f5b85;
+        }
+
+        /* footer: simple and clean */
+        .footer {
+            background: #0f2b3d;
+            border-radius: 1.5rem;
+            padding: 2rem 2rem 1.2rem;
+            color: #cbd5e6;
+            margin-top: 1rem;
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .footer-col {
+            flex: 1;
+            min-width: 140px;
+        }
+        .footer-col h4 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .footer-col p, .footer-col a {
+            font-size: 0.85rem;
+            color: #b9d0e0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        .footer-col a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        .social-icons {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+        }
+        .social-icons a {
+            background: #1f4b62;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        .social-icons a i {
+            font-size: 1rem;
+            color: white;
+        }
+        .social-icons a:hover {
+            background: #2c7da0;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid #1f4b62;
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 1.2rem;
+            }
+            .section {
+                padding: 1.5rem;
+            }
+            .services-grid {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to My Webpage</h1>
-        <p>This is a simple HTML webpage. You can edit this content and add more elements as needed.</p>
+
+<div class="container">
+    <!-- Simple header / dashboard title -->
+    <div class="header">
+        <h1><i class="fas fa-chart-simple"></i> Simple Dashboard</h1>
+        <p>Clear information · About · Services · Contact</p>
     </div>
-     
+
+    <!-- ABOUT SECTION -->
+    <div class="section" id="about">
+        <div class="section-title">
+            <i class="fas fa-building"></i>
+            <span>About</span>
+        </div>
+        <div class="divider"></div>
+        <div class="about-text">
+            <p>We are a small team dedicated to creating useful digital tools. Our focus is on simplicity, reliability, and honest communication. Since 2022, we've helped startups and small businesses establish a strong online presence without the complexity.</p>
+            <p>Our mission: deliver clear value through straightforward design and thoughtful service. Whether you need a modern website or a business dashboard, we keep things simple and effective.</p>
+        </div>
+    </div>
+
+    <!-- SERVICES SECTION -->
+    <div class="section" id="services">
+        <div class="section-title">
+            <i class="fas fa-gear"></i>
+            <span>Services</span>
+        </div>
+        <div class="divider"></div>
+        <div class="services-grid">
+            <div class="service-item">
+                <i class="fas fa-code"></i>
+                <h3>Web design</h3>
+                <p>Clean, responsive websites that work on all devices.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-chart-line"></i>
+                <h3>Analytics</h3>
+                <p>Understand your audience with simple data reports.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-headset"></i>
+                <h3>Support</h3>
+                <p>Friendly help when you need it, no confusing jargon.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-cloud"></i>
+                <h3>Cloud setup</h3>
+                <p>Easy migration and secure storage solutions.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACTS SECTION -->
+    <div class="section" id="contacts">
+        <div class="section-title">
+            <i class="fas fa-envelope-open-text"></i>
+            <span>Contacts</span>
+        </div>
+        <div class="divider"></div>
+        <div class="contacts-wrapper">
+            <div class="contact-info">
+                <p style="margin-bottom: 1rem;">Reach out anytime — we’ll get back to you within 24 hours.</p>
+                <ul class="contact-details">
+                    <li><i class="fas fa-map-pin"></i> 6111 Kabankalan City, Negros Occidental, Philippines</li>
+                    <li><i class="fas fa-phone"></i> 09123456780</li>
+                    <li><i class="fas fa-envelope"></i> hello@simpledash.com</li>
+                    <li><i class="fas fa-clock"></i> Mon–Fri, 8am – 5pm </li>
+                </ul>
+            </div>
+            <div class="contact-form">
+                <form id="simpleContactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email address" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="3" id="message" placeholder="How can we help?"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send message →</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER SECTION (simple) -->
+    <div class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>SimpleDash</h4>
+                <p>Practical tools, clean design. Built for clarity.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Navigate</h4>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#contacts">Contact</a>
+                <a href="#">Privacy</a>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <a href="#">Help center</a>
+                <a href="#">Status</a>
+                <a href="#">Blog</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="#">Terms of use</a>
+                <a href="#">Cookie policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Simple Dashboard — All rights reserved.
+        </div>
+    </div>
+</div>
+
+<!-- simple toast notification for contact demo -->
+<div id="toastMsg" style="position: fixed; bottom: 20px; right: 20px; background: #1f4b62; color: white; padding: 10px 20px; border-radius: 40px; font-size: 0.85rem; opacity: 0; transition: opacity 0.2s; pointer-events: none; z-index: 999;"></div>
+
+<script>
+    // Smooth scroll for footer navigation links
+    document.querySelectorAll('.footer-col a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId !== '#') {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+
+    // Contact form simple handler
+    const form = document.getElementById('simpleContactForm');
+    const toast = document.getElementById('toastMsg');
+    let timeoutId;
+
+    function showMessage(text) {
+        if (timeoutId) clearTimeout(timeoutId);
+        toast.textContent = text;
+        toast.style.opacity = '1';
+        timeoutId = setTimeout(() => {
+            toast.style.opacity = '0';
+        }, 2500);
+    }
+
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const msgInput = document.getElementById('message');
+            const name = nameInput ? nameInput.value.trim() : '';
+            const email = emailInput ? emailInput.value.trim() : '';
+            const messageText = msgInput ? msgInput.value.trim() : '';
+
+            if (!name || !email) {
+                showMessage('❌ Please fill in name and email.');
+                return;
+            }
+            if (!email.includes('@') || !email.includes('.')) {
+                showMessage('📧 Please use a valid email address.');
+                return;
+            }
+
+            // simple demo feedback
+            console.log(`Message from ${name} (${email}): ${messageText}`);
+            showMessage(`✓ Thanks ${name}! We'll contact you soon.`);
+            // clear fields
+            if (nameInput) nameInput.value = '';
+            if (emailInput) emailInput.value = '';
+            if (msgInput) msgInput.value = '';
+        });
+    }
+
+    // optional: handle any other anchor link just for consistency
+    const allInternalLinks = document.querySelectorAll('a[href^="#"]');
+    allInternalLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const hash = this.getAttribute('href');
+            if (hash === '#') return;
+            const el = document.querySelector(hash);
+            if (el && hash !== '#') {
+                e.preventDefault();
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
 </body>
 </html>
